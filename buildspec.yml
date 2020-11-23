@@ -33,7 +33,6 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: 'gesostore*'
   name: geostore-artifact
   discard-paths: no
 
