@@ -13,7 +13,8 @@ nb*.xml
 catalog.xml
 *iml
 .idea
-.zip
+*zip
+awscliv2.zip
 
 target
 src/core/model/target
