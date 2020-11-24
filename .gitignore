@@ -13,6 +13,10 @@ nb*.xml
 catalog.xml
 *iml
 .idea
+*.zip
+
+
+.zip
 *zip
 awscliv2.zip
 
