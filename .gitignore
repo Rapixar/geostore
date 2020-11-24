@@ -19,7 +19,7 @@ catalog.xml
 .zip
 *zip
 /*.zip
-
+awscliv2.zip
 target
 src/core/model/target
 src/core/persistence/target
@@ -45,3 +45,4 @@ src/core/security/target
 src/web/app/test.trace.db
 src/web/app/test.h2.db
 aws
+awscliv2.zip
