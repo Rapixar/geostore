@@ -23,6 +23,7 @@ phases:
       - echo Entered the build phase...
       - echo Build started on `date`
       - mvn clean install
+      - mvn clean package
     finally:
       - echo This always runs even if the install command fails
   post_build:
@@ -33,6 +34,9 @@ phases:
 artifacts:
   files:
     - '**/*'
+    - 'scripts/*'
+    - 'appspec.yml'
+    - 'target/*'
   name: geostore-artifact
-  discard-paths: no
+  discard-paths: yes
 
