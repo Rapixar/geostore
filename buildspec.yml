@@ -33,9 +33,9 @@ phases:
   
 artifacts:
   files:
-    - '**/*'
     - scripts/*
     - appspec.yml
+    - target/*
   name: geostore-artifact
-  discard-paths: no
+  discard-paths: yes
 
