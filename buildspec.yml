@@ -36,5 +36,5 @@ artifacts:
     - scripts/*
     - target/*
   name: geostore-artifact
-  discard-paths: yes
+  discard-paths: no
 
