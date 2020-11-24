@@ -4,7 +4,7 @@
 ## If you need to add static paths to the ignore list, please edit the createGitIgnore script.
 ##
 ## - ETj
-
+*.zip
 nb*.xml
 .classpath
 .project
