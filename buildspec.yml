@@ -35,6 +35,7 @@ artifacts:
     - appspec.yml
     - scripts/*
     - src/target/*
+    - src/web/app/target/*
   name: geostore-artifact
   discard-paths: yes
 cache:
