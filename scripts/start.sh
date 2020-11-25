@@ -1,6 +1,6 @@
 
 #!/usr/bin/env bash
 
-cd /home/ec2-user/var/www/webapp
-sudo service httpd start
-    
+echo "deploying application"
+sudo java *.war
+echo "done deploying application"

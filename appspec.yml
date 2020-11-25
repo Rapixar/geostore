@@ -5,6 +5,16 @@ files:
   - source: /
     destination: /var/www/html
 
+hooks:
+    ApplicationStop:
+    - location: stop.sh
+      timeout: 300
+      runas: root
+    ApplicationStart:
+    - location: start.sh
+      timeout: 300
+      runas: root
+
 permissions:
   - object: /
     pattern: "**"
