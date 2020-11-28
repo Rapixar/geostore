@@ -25,6 +25,12 @@ phases:
     commands:
       - echo Entered the pre_build phase...
       - docker run -e PGPASSWORD -e PGUSER -e PGDATABASE -d -p 5432:5432 postgres
+      - psql \ --host=geostore-database-1.ck0fw0ou3xwc.us-east-2.rds.amazonaws.com \ --port=5432 \ --username=geostore \ --password=Christian97 \ --dbname=postgres
+      - createdb geostore
+      - psql -d geostore -f ./doc/sql/001_setup_db.sql
+      - psql -U geostore -d geostore -f ./doc/sql/002_create_schema_postgres.sql
+      - psql -U geostore_test -d geostore -f ./doc/sql/002_create_schema_postgres.sql
+      - /q
       
     finally:
       - echo This always runs even if the login command fails 
