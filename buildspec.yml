@@ -16,7 +16,7 @@ phases:
       - export POSTGRES_PASSWORD="Christian97"
       - PGPASSWORD="$POSTGRES_PASSWORD" psql -t -A \ -h "$POSTGRES_HOST" \ -p "$POSTGRES_PORT" \ -d "$POSTGRES_DATABASE" \ -U "$POSTGRES_USERNAME" \
 
-      - psql createdb geostore
+      - createdb geostore
       - psql -U geostore -d geostore -f ./doc/sql/002_create_schema_postgres.sql
       - psql -U geostore_test -d geostore -f ./doc/sql/002_create_schema_postgres.sql
 
