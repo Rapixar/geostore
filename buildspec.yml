@@ -9,17 +9,13 @@ phases:
       - echo Entered the install phase...
       - apt-get update -y
       - apt-get install -y postgresql-client
-      - export POSTGRES_HOST="geostore-database-1.ck0fw0ou3xwc.us-east-2.rds.amazonaws.com"
-      - export POSTGRES_PORT="5432"
-      - export POSTGRES_DATABASE="postgres"
-      - export POSTGRES_USERNAME="geostore"
-      - export POSTGRES_PASSWORD="Christian97"
-      - PGPASSWORD="$POSTGRES_PASSWORD" psql -t -A \ -h "$POSTGRES_HOST" \ -p "$POSTGRES_PORT" \ -d "$POSTGRES_DATABASE" \ -U "$POSTGRES_USERNAME" \
-
-      - psql -d postgres -f ./doc/sql/001_setup_db.sql
-      - psql -U geostore -d postgres -f ./doc/sql/002_create_schema_postgres.sql
-      - psql -U geostore_test -d postgres -f ./doc/sql/002_create_schema_postgres.sql
-
+      - apt-get install -y postgresql postgresql-contrib
+      
+      - -u postgres createdb geostore
+      - -u postgres psql -d postgres -f ./doc/sql/001_setup_db.sql
+      - -u postgres psql -U geostore -d postgres -f ./doc/sql/002_create_schema_postgres.sql
+      - -u postgres psql -U geostore_test -d postgres -f ./doc/sql/002_create_schema_postgres.sql
+      
       - apt-get install -y maven
       - cd src
       - mvn clean install -Dovrdir=postgres -Ppostgresgi
