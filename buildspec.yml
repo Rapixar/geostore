@@ -10,7 +10,7 @@ phases:
     runtime-versions:
       java: openjdk8
     commands:
-      -docker pull postgres:latest
+      - docker pull postgres:latest
       - echo Entered the install phase...
       - apt-get update -y
       - apt-get install -y postgresql-client
