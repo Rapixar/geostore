@@ -3,7 +3,7 @@ os: linux
 
 files:
   - source: /
-    destination: /opt/tomcat/latest/webapps
+    destination: /home/tomcat/webapps
 
 hooks:
     ApplicationStop:
