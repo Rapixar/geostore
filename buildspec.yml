@@ -17,8 +17,8 @@ phases:
       - PGPASSWORD="$POSTGRES_PASSWORD" psql -t -A \ -h "$POSTGRES_HOST" \ -p "$POSTGRES_PORT" \ -d "$POSTGRES_DATABASE" \ -U "$POSTGRES_USERNAME" \
 
         - createdb geostore
-        - psql -U geostore -d geostore -f ./doc/sql/002_create_schema_postgres.sql
-        - psql -U geostore_test -d geostore -f ./doc/sql/002_create_schema_postgres.sql
+      - psql -U geostore -d geostore -f ./doc/sql/002_create_schema_postgres.sql
+      - psql -U geostore_test -d geostore -f ./doc/sql/002_create_schema_postgres.sql
 
       - apt-get install -y maven
       - cd src
