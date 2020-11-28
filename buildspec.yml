@@ -1,37 +1,40 @@
 version: 0.2
-
+env:
+  variables:
+    PGDATABASE: "geostore"
+    PGUSER: "geostore"
+    PGPASSWORD: "geostore"
 
 phases:
   install:
     runtime-versions:
       java: openjdk8
     commands:
+      -docker pull postgres:latest
       - echo Entered the install phase...
       - apt-get update -y
       - apt-get install -y postgresql-client
       - apt-get install -y postgresql postgresql-contrib
-      - / -i / -u postgres
-      - createdb geostore
-      - psql -d postgres -f ./doc/sql/001_setup_db.sql
-      - psql -U geostore -d postgres -f ./doc/sql/002_create_schema_postgres.sql
-      - psql -U geostore_test -d postgres -f ./doc/sql/002_create_schema_postgres.sql
       - exit
       - apt-get install -y maven
       - cd src
-      - mvn clean install -Dovrdir=postgres -Ppostgresgi
+      
     finally:
       - echo This always runs even if the update or install command fails 
   pre_build:
     commands:
       - echo Entered the pre_build phase...
-      #- docker login –u User –p $LOGIN_PASSWORD
+      - docker run -e PGPASSWORD -e PGUSER -e PGDATABASE -d -p 5432:5432 postgres
+      - psql -d postgres -f ./doc/sql/001_setup_db.sql
+      - psql -U geostore -d postgres -f ./doc/sql/002_create_schema_postgres.sql
+      - psql -U geostore_test -d postgres -f ./doc/sql/002_create_schema_postgres.sql
     finally:
       - echo This always runs even if the login command fails 
   build:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
-      - mvn clean install
+      - mvn clean install -Dovrdir=postgres -Ppostgresgil
     finally:
       - echo This always runs even if the install command fails
   post_build:
