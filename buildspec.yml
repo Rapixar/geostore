@@ -8,7 +8,7 @@ phases:
     commands:
       - echo Entered the install phase...
       - apt-get update -y
-      - apt install postgresql-client
+      - apt-get install postgresql-client
       - export POSTGRES_HOST="geostore-database-1.ck0fw0ou3xwc.us-east-2.rds.amazonaws.com"
       - export POSTGRES_PORT="5432"
       - export POSTGRES_DATABASE="postgres"
