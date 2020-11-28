@@ -16,9 +16,9 @@ phases:
       - export POSTGRES_PASSWORD="Christian97"
       - PGPASSWORD="$POSTGRES_PASSWORD" psql -t -A \ -h "$POSTGRES_HOST" \ -p "$POSTGRES_PORT" \ -d "$POSTGRES_DATABASE" \ -U "$POSTGRES_USERNAME" \
 
-      - psql -d geostore -f YOUR_GEOSTORE_DIR/doc/sql/001_setup_db.sql
-      - psql -U geostore -d geostore -f ./doc/sql/002_create_schema_postgres.sql
-      - psql -U geostore_test -d geostore -f ./doc/sql/002_create_schema_postgres.sql
+      - psql -d postgres -f YOUR_GEOSTORE_DIR/doc/sql/001_setup_db.sql
+      - psql -U geostore -d postgres -f ./doc/sql/002_create_schema_postgres.sql
+      - psql -U geostore_test -d postgres -f ./doc/sql/002_create_schema_postgres.sql
 
       - apt-get install -y maven
       - cd src
