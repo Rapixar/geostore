@@ -12,7 +12,5 @@ mvn clean install -Dovrdir=postgres -Ppostgres
 cd /src/web/app
 mvn jetty:run
 
-sudo systemctl restart tomcat
-
 
 echo "done deploying application"
