@@ -10,30 +10,18 @@ phases:
     runtime-versions:
       java: openjdk8
     commands:
-      - docker pull postgres:latest
       - echo Entered the install phase...
-      - apt-get update -y
-      - apt-get install -y postgresql-client
-      - apt-get install -y postgresql postgresql-contrib
-      - exit
-      - apt-get install -y maven
-      - cd src
-      
     finally:
       - echo This always runs even if the update or install command fails 
   pre_build:
     commands:
       - echo Entered the pre_build phase...
-      - docker run -e PGPASSWORD -e PGUSER -e PGDATABASE -d -p 5432:5432 postgres
-      
-      
     finally:
       - echo This always runs even if the login command fails 
   build:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
-      - mvn clean install
     finally:
       - echo This always runs even if the install command fails
   post_build:
